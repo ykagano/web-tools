@@ -9,13 +9,23 @@
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <script>
         // utf8からbase64に変換する
-        var enc = function() {
-            document.getElementById("txtDest_uc").value = window.btoa(unescape(encodeURIComponent(document.getElementById("txtSrc").value)));
+        var enc = function () {
+            document.getElementById("txtDest").value = window.btoa(unescape(encodeURIComponent(document.getElementById("txtSrc").value)));
         };
 
         // base64からutf8に変換する
-        var dec = function() {
-            document.getElementById("txtDest_uc").value = decodeURIComponent(escape(window.atob(document.getElementById("txtSrc").value)));
+        var dec = function () {
+            document.getElementById("txtDest").value = decodeURIComponent(escape(window.atob(document.getElementById("txtSrc").value)));
+        };
+
+        /**
+         * 左右入れ替え
+         */
+        var swap = function () {
+            var str = document.getElementById("txtSrc").value;
+
+            document.getElementById("txtSrc").value = document.getElementById("txtDest").value;
+            document.getElementById("txtDest").value = str;
         };
     </script>
 </head>
@@ -39,9 +49,10 @@
                     <td><textarea id="txtSrc" class="form-control" rows="15" placeholder="対象文字列"></textarea></td>
                     <td>
                         <button type="button" class="btn btn-primary w-100 mb-3" onclick="enc();">エンコード</button><br>
-                        <button type="button" class="btn btn-primary w-100 mb-3" onclick="dec();">デコード</button>
+                        <button type="button" class="btn btn-primary w-100 mb-3" onclick="dec();">デコード</button><br>
+                        <button type="button" class="btn btn-primary w-100 mb-3" onclick="swap();">⇆</button>
                     </td>
-                    <td><textarea id="txtDest_uc" class="form-control" rows="15"  placeholder="変換結果"></textarea></td>
+                    <td><textarea id="txtDest" class="form-control" rows="15" placeholder="変換結果"></textarea></td>
                 </tr>
             </tbody>
         </table>
