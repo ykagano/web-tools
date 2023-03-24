@@ -8,9 +8,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <script>
-        var escape = function() {
+        var escape = function () {
             var str = document.getElementById("txtSrc").value;
-            document.getElementById("txtDest_uc").value = str.replace(/&/g, '&amp;')
+            document.getElementById("txtDest").value = str.replace(/&/g, '&amp;')
                 .replace(/</g, '&lt;')
                 .replace(/>/g, '&gt;')
                 .replace(/"/g, '&quot;')
@@ -18,10 +18,20 @@
                 .replace(/ /g, '&nbsp;');
         };
 
-        var unescape = function() {
+        var unescape = function () {
             var str = document.getElementById("txtSrc").value;
             var doc = new DOMParser().parseFromString(str, 'text/html');
-            document.getElementById("txtDest_uc").value = doc.documentElement.textContent;
+            document.getElementById("txtDest").value = doc.documentElement.textContent;
+        };
+
+        /**
+         * 左右入れ替え
+         */
+        var swap = function () {
+            var str = document.getElementById("txtSrc").value;
+
+            document.getElementById("txtSrc").value = document.getElementById("txtDest").value;
+            document.getElementById("txtDest").value = str;
         };
     </script>
 </head>
@@ -45,9 +55,11 @@
                     <td><textarea id="txtSrc" class="form-control" rows="15" placeholder="対象文字列"></textarea></td>
                     <td>
                         <button type="button" class="btn btn-primary w-100 mb-3" onclick="escape();">エスケープ</button><br>
-                        <button type="button" class="btn btn-primary w-100 mb-3" onclick="unescape();">アンエスケープ</button>
+                        <button type="button" class="btn btn-primary w-100 mb-3"
+                            onclick="unescape();">アンエスケープ</button><br>
+                        <button type="button" class="btn btn-primary w-100 mb-3" onclick="swap();">⇆</button>
                     </td>
-                    <td><textarea id="txtDest_uc" class="form-control" rows="15" placeholder="変換結果"></textarea></td>
+                    <td><textarea id="txtDest" class="form-control" rows="15" placeholder="変換結果"></textarea></td>
                 </tr>
             </tbody>
         </table>
