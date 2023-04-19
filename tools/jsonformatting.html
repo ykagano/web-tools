@@ -31,26 +31,27 @@
     </nav>
     <div class="container">
         <h2>JSON整形</h2>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th class="text-center">入力</th>
-                    <th class="text-center">操作</th>
-                    <th class="text-center">結果</th>
-                </tr>
-            </thead>
+        <table class="table table-borderless">
             <tbody>
                 <tr>
-                    <td><textarea id="txtSrc" class="form-control" rows="15" placeholder="対象文字列"></textarea></td>
+                    <td><textarea id="txtSrc" class="form-control" rows="15" placeholder="対象文字列を入力"></textarea></td>
+                </tr>
+                <tr>
                     <td>
                         <button type="button" class="btn btn-primary w-100 mb-3"
-                            onclick="formatting();">対象文字列を整形</button><br>
+                            onclick="formatting();">⬇︎&nbsp;対象文字列を整形&nbsp;⬇︎</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <textarea id="txtDest" class="form-control" rows="15" placeholder="整形結果"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <button type="button" class="btn btn-primary w-100 mb-3" onclick="copy();">整形結果をコピー</button><br>
                         <button type="button" class="btn btn-primary w-100 mb-3"
                             onclick="clearText();">整形結果をクリア</button>
-                    </td>
-                    <td>
-                        <textarea id="txtDest" class="form-control" rows="15" placeholder="整形結果"></textarea>
                     </td>
                 </tr>
             </tbody>
